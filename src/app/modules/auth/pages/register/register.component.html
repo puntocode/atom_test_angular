@@ -1,0 +1,32 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="my-5">
+  <h3 class="mb-0">Regístrate para crear una nueva cuenta</h3>
+  <p class="text-black-50">Completa el formulario a continuación para registrarte:</p>
+
+  <div class="form-group">
+    <label for="" class="form-label">Usuario</label>
+    <input class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group my-3">
+    <label for="" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email">
+    <small class="text-danger" *ngIf="email?.invalid && email?.touched">
+      El email es obligatorio y debe ser un email valido
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" formControlName="password">
+    <small class="text-danger" *ngIf="password?.invalid && password?.touched">
+      La Contraseña es obligatoria y debe contener minimo 6 caracteres
+    </small>
+  </div>
+
+  <div class="d-grid gap-2 mt-4">
+    <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid || submitted">
+      <i *ngIf="submitted" class="bx bx-loader bx-spin"></i> {{ btnSubmitText }}
+    </button>
+    <button class="btn btn-light" type="button" routerLink="/">Volver al Login</button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+
+.layout{
+  min-height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  align-items: center;
+
+  .card{
+    border-radius: 1rem;
+    .img-fluid{
+      border-radius: 1rem;
+    }
+  }
+}

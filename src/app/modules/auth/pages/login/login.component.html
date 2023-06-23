@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="my-5">
+  <h3 class="mb-0">Bienvenidos a Todatom</h3>
+  <p class="text-black-50">Ingresa tus credenciales para acceder:</p>
+
+  <div class="form-group">
+    <label for="" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email">
+    <small class="text-danger" *ngIf="email?.invalid && email?.touched">
+      El email es obligatorio y de formato válido
+    </small>
+  </div>
+
+  <div class="form-group mt-3">
+    <label for="" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" formControlName="password">
+    <small class="text-danger" *ngIf="password?.invalid && password?.touched">
+      La Contraseña es obligatoria y debe contener minimo 6 caracteres
+    </small>
+  </div>
+
+  <div class="d-grid gap-3 mt-4">
+    <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid || submitted">
+      <i *ngIf="submitted" class="bx bx-loader bx-spin"></i> {{ btnSubmitText }}
+    </button>
+    <button class="btn btn-light" type="button" routerLink="/auth/register">Registrarse</button>
+  </div>
+</form>

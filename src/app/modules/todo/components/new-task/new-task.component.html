@@ -1,0 +1,35 @@
+<button class="btn btn-primary" type="button" (click)="openModal(modalTask)">
+  <i class="bx bx-plus"></i> Crear tarea
+</button>
+
+<!-- Modal Nueva Tarea --------------------------->
+<ng-template #modalTask>
+  <div class="modal-header border-0">
+    <h4 class="modal-title text-primary">Nueva Tarea</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <i class="bx bx-times"></i>
+    </button>
+  </div>
+  <div class="modal-body p-4">
+    <form action="">
+      <div class="form-group">
+        <label for="">Titulo</label>
+        <input type="text" class="form-control">
+      </div>
+
+      <div class="form-group my-3">
+        <label for="">Descripción</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="">Fecha</label>
+        <input type="date" class="form-control">
+      </div>
+
+      <button class="btn btn-primary mt-4 float-end">
+        Crear tarea
+      </button>
+    </form>
+  </div>
+</ng-template>

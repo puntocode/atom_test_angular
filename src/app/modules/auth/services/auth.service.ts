@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from 'src/environments/environments';
+import { Usuario } from '../model/User.model';
+import { catchError, map } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private apiUrl = `${environment.apiUrl}/v1/auth`;
+  public usuario!:Usuario;
+
+  constructor(private http: HttpClient) { }
+
+  login(email:string, password :string){
+    return this.http.post(`${this.apiUrl}/login`, {email, password})
+      .pipe(
+        map( (resp:any) => this.updateToken(resp)),
+        catchError(err => { throw 'Credenciales incorrectas'})
+      );
+  }
+
+
+  register(data:any){
+    return this.http.post(`${this.apiUrl}/register`, data)
+      .pipe( map( (resp:any) => this.updateToken(resp)) );
+  }
+
+
+  updateToken(resp:any){
+    localStorage.setItem('token', resp.access_token);
+    this.usuario = resp.user;
+    return true;
+  }
+
+}

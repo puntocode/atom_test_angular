@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: #ff6600;
+/* Importing Bootstrap SCSS file. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap');
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import 'ngx-toastr/toastr-bs5-alert';
+@import 'boxicons/css/boxicons.min.css';
+
+
+body {
+  background-color: #efedf7;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-primary {
+  color: #fff;
+  &:hover { color: #fff; }
+}
