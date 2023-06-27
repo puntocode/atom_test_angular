@@ -9,7 +9,7 @@ module.exports = {
       watch: false, // No observar cambios en los archivos
       max_memory_restart: '1G', // Reiniciar la aplicación si supera este límite de memoria
       env: {
-        NODE_ENV: 'production' // Variable de entorno (puedes personalizarla según tus necesidades)
+        NODE_ENV: 'testing' // Variable de entorno (puedes personalizarla según tus necesidades)
       }
     }
   ]
