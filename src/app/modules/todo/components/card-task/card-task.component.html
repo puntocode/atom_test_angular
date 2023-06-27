@@ -1,17 +1,25 @@
-<div class="col-md-3">
-  <div class="card p-3 border-0">
-    <div class="card-title p-2 m-0 d-flex justify-content-between">
-      <span class="badge bg-warning">Pendientes</span>
-      <i class='bx bx-circle'></i>
-    </div>
+<div class="card p-3 border-0 w-100 mb-3 animate__animated animate__fadeInUp">
+  <div class="card-title p-2 m-0 d-flex justify-content-between">
+    <span class="badge " [ngClass]="taskClass">
+      {{ task.completed ? 'Completado' : 'Pendiente' }}
+    </span>
+    <i class='bx bx-loader-circle bx-spin' *ngIf="changing; else iconStatus"></i>
+    <ng-template #iconStatus>
+      <i class='bx' [ngClass]="iconClass" (click)="changeStatus()"></i>
+    </ng-template>
+  </div>
 
-    <div class="card-body">
-      <h5 class="font-bold">Titulo</h5>
-      <small class="text-black-50">Lorem ipsum dolor sit amet consecte, adipisicing elit.</small>
-    </div>
+  <div class="card-body">
+    <h5 class="font-bold text-capitalize">{{ task.title }}</h5>
+    <small class="text-black-50">{{ task.description }}</small>
+  </div>
 
-    <div class="card-footer border-0 bg-white text-black-50 text-end">
-      <i class='bx bx-calendar'></i> 20 May
+  <div class="card-footer border-0 bg-white text-black-50 d-flex justify-content-between">
+    <div class="d-flex">
+      <i class='bx bx-edit text-primary pointer' *ngIf="!task.completed" (click)="editTask()"></i>
+      <i class='bx bx-trash text-danger pointer' (click)="showDeleteQuestion()"></i>
     </div>
+    <span><i class='bx bx-calendar'></i> {{ task.date | date:"dd MMM" }}</span>
   </div>
 </div>
+

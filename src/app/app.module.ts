@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // Toastr Module
 import { ToastrModule } from 'ngx-toastr';
@@ -12,6 +13,12 @@ const toast = { timeOut: 3000, closeButton: true, progressBar: true };
 
 //Bootstrap Module
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { tokenInterceptorProvider } from './shared/interceptors/interceptor.service';
+
+//Fechas en Español
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
 
 
 @NgModule({
@@ -26,7 +33,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ToastrModule.forRoot(toast),
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    tokenInterceptorProvider,
+    { provide: LOCALE_ID, useValue: 'es' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

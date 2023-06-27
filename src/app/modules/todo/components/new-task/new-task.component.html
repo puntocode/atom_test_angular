@@ -1,35 +1,43 @@
-<button class="btn btn-primary" type="button" (click)="openModal(modalTask)">
+<button class="btn btn-primary" type="button" (click)="openModal()">
   <i class="bx bx-plus"></i> Crear tarea
 </button>
 
 <!-- Modal Nueva Tarea --------------------------->
 <ng-template #modalTask>
   <div class="modal-header border-0">
-    <h4 class="modal-title text-primary">Nueva Tarea</h4>
-    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <h4 class="modal-title text-primary"><i class='bx bx-task'></i> Nueva Tarea</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalClose()">
       <i class="bx bx-times"></i>
     </button>
   </div>
   <div class="modal-body p-4">
-    <form action="">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="">Titulo</label>
-        <input type="text" class="form-control">
+        <label class="text-black-50">Titulo</label>
+        <input type="text" class="form-control" formControlName="title">
       </div>
 
       <div class="form-group my-3">
-        <label for="">Descripción</label>
-        <textarea class="form-control" rows="3"></textarea>
+        <label class="text-black-50">Descripción</label>
+        <textarea class="form-control" rows="3" formControlName="description"></textarea>
       </div>
 
       <div class="form-group">
-        <label for="">Fecha</label>
-        <input type="date" class="form-control">
+        <label class="text-black-50">Fecha</label>
+        <input type="date" class="form-control" formControlName="date">
       </div>
 
-      <button class="btn btn-primary mt-4 float-end">
-        Crear tarea
-      </button>
+      <div class="form-group d-flex justify-content-between align-items-end">
+        <span class="pointer" (click)="modalClose()">Cancelar</span>
+
+        <button
+          class="btn btn-primary mt-4"
+          type="submit"
+          [disabled]="taskForm.invalid || sending">
+            <i *ngIf="sending" class="bx bx-loader bx-spin"></i>
+            {{ btnTxt }} Tarea
+        </button>
+    </div>
     </form>
   </div>
 </ng-template>

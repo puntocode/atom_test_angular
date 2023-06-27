@@ -2,12 +2,12 @@
   <h3 class="mb-0">Regístrate para crear una nueva cuenta</h3>
   <p class="text-black-50">Completa el formulario a continuación para registrarte:</p>
 
-  <div class="form-group">
+  <div class="form-group animate__animated animate__fadeInDown">
     <label for="" class="form-label">Usuario</label>
     <input class="form-control" formControlName="name">
   </div>
 
-  <div class="form-group my-3">
+  <div class="form-group my-3 animate__animated animate__fadeInDown">
     <label for="" class="form-label">Email</label>
     <input type="email" class="form-control" formControlName="email">
     <small class="text-danger" *ngIf="email?.invalid && email?.touched">
@@ -15,15 +15,18 @@
     </small>
   </div>
 
-  <div class="form-group">
+  <div class="form-group animate__animated animate__fadeInDown">
     <label for="" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" formControlName="password">
+    <div class="input-icons-end">
+      <i class='bx bx-low-vision' (click)="viewPass = !viewPass"></i>
+      <input [type]="viewPass ? 'password' : 'text'" class="form-control" formControlName="password" />
+    </div>
     <small class="text-danger" *ngIf="password?.invalid && password?.touched">
       La Contraseña es obligatoria y debe contener minimo 6 caracteres
     </small>
   </div>
 
-  <div class="d-grid gap-2 mt-4">
+  <div class="d-grid gap-2 mt-4 animate__animated animate__fadeInUp">
     <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid || submitted">
       <i *ngIf="submitted" class="bx bx-loader bx-spin"></i> {{ btnSubmitText }}
     </button>

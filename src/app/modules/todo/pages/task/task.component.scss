@@ -1,0 +1,52 @@
+$primary: #ff6600;
+$secondary: #807e7e;
+
+.exit{
+  font-size: 2rem;
+  padding: .2rem 0;
+  color: $secondary;
+  cursor: pointer;
+
+  &:hover{
+    color: #e04c60;
+  }
+}
+
+.status{
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid $secondary;
+  color: $secondary;
+  cursor: pointer;
+
+  &:hover{ color: $primary;
+    span{ background-color: $primary;}
+  }
+
+  span{
+    margin-right: .5rem;
+    background-color: $secondary;
+  }
+}
+
+.active{ color: $primary;
+  span{ background-color: $primary; }
+}
+
+
+
+@media (max-width: 520px) {
+  .status{
+    font-size: .9rem;
+    padding: 0 .5rem 0 0;
+    margin-right: .5rem;
+
+    span{
+      margin-right: .1rem;
+    }
+  }
+}

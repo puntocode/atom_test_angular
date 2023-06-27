@@ -19,6 +19,7 @@ export class RegisterComponent {
   });
 
   submitted:boolean = false;
+  viewPass:boolean = true;
 
   get email() { return this.registerForm.get('email'); }
   get password() { return this.registerForm.get('password'); }

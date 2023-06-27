@@ -1,18 +1,25 @@
 
-<div class="layout">
+<div class="layout animate__animated animate__fadeIn">
 
-  <section class="container px-5">
+  <section class="container px-md-5">
     <div class="card border-0">
       <div class="card-body">
+
         <div class="row">
-          <div class="col-md-6 px-5">
-            <img src="../../../../../assets/images/png/logo-atom.png" width="80" alt="logo-atom">
+          <div class="col-lg-6 px-4 px-md-5">
+            <img
+              class="animate__animated animate__pulse"
+              src="../../../../../assets/images/png/logo-atom.png"
+              width="80"
+              alt="logo-atom">
             <router-outlet></router-outlet>
           </div>
-          <div class="col-md-6 rounded">
-            <img src="../../../../../assets/images/webp/todo.jpg" class="img-fluid" alt="illustration">
+
+          <div class="col-lg-6 rounded d-none d-lg-block">
+            <img src="../../../../../assets/images/webp/todo.webp" class="img-fluid" alt="illustration">
           </div>
         </div>
+
       </div>
     </div>
   </section>

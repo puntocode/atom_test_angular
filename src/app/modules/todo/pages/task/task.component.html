@@ -1,34 +1,58 @@
 <div class="container">
 
-  <div class="row mt-5">
-    <div class="col-md-6">
-      <h2 class="m-0">Nombre  </h2>
+  <div class="row mt-5 mb-4 mb-md-0">
+    <div class="col-md-6 animate__animated animate__fadeInDown">
+      <h2 class="card-title placeholder-glow text-capitalize">{{ user.name }}</h2>
       <p class="text-black-50">Lista de todas las tareas Pendientes</p>
     </div>
-    <div class="col-md-6">
-      <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-        <app-new-task></app-new-task>
-        <i class='bx bx-exit text-danger py-1' style="font-size: 2rem;"></i>
-
-        <!-- <button class="btn btn-danger" type="button">
-          <i class='bx bx-exit'></i>
-        </button> -->
+    <div class="col-md-6 animate__animated animate__fadeInDownBig">
+      <div class="d-grid gap-1 d-flex justify-content-md-end">
+        <app-new-task (addTask)="addTask($event)"></app-new-task>
+        <i class='bx bx-exit exit' (click)="logout()" title="Cerrar Sesión"></i>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row animate__animated animate__fadeInLeft">
     <div class="col-12">
       <div class="card border-0">
-        <div class="card-body">
-          Pendientes
+        <div class="card-body d-flex">
+          <button
+            class="btn status"
+            [class.active] = "active === 'all'"
+            [disabled]="loading"
+            (click)="changeStatus('all')">
+            <span class="badge">{{ totalTask.total }}</span> Todas
+          </button>
+
+          <button
+            class="btn status"
+            [class.active] = "active === 'pending'"
+            [disabled]="loading"
+            (click)="changeStatus('pending', false)">
+            <span class="badge">{{ totalTask.pending }}</span> Pendientes
+          </button>
+
+          <button
+            class="btn status"
+            [class.active] = "active === 'completed'"
+            [disabled]="loading"
+            (click)="changeStatus('completed', true)">
+            <span class="badge">{{ totalTask.completed }}</span> Compleatadas
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row mt-md-3">
-    <app-card-task></app-card-task>
+  <div class="row mt-3">
+    <div class="col-lg-3 col-md-6" *ngFor="let task of tasks">
+      <app-card-task
+        [task]="task"
+        (edit)="emitTask($event)"
+        (remove)="removeTask($event)"
+        (onChange)="getTotals()">
+      </app-card-task>
+    </div>
   </div>
 </div>
-

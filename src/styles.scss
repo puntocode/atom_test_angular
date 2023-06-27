@@ -2,12 +2,13 @@
 $primary: #ff6600;
 /* Importing Bootstrap SCSS file. */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap');
-@import "./node_modules/bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import "ngx-bootstrap/datepicker/bs-datepicker";
 @import 'ngx-toastr/toastr-bs5-alert';
 @import 'boxicons/css/boxicons.min.css';
+@import 'animate.css/animate.min.css';
 
 
 body {
@@ -18,4 +19,23 @@ body {
 .btn-primary {
   color: #fff;
   &:hover { color: #fff; }
+  &:disabled { color: #fff; }
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+.input-icons-end {
+  width: 100%;
+  position: relative;
+
+  i {
+    position: absolute;
+    padding: 10px;
+    color: #78787c;
+    right: 0;
+    cursor: pointer;
+  }
+}
+

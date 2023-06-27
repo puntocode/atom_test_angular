@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environments';
 import { Usuario } from '../model/User.model';
-import { catchError, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,6 @@ import { catchError, map } from 'rxjs';
 export class AuthService {
 
   private apiUrl = `${environment.apiUrl}/v1/auth`;
-  public usuario!:Usuario;
-
   constructor(private http: HttpClient) { }
 
   login(email:string, password :string){
@@ -32,7 +30,6 @@ export class AuthService {
 
   updateToken(resp:any){
     localStorage.setItem('token', resp.access_token);
-    this.usuario = resp.user;
     return true;
   }
 
