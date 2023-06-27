@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://breeze_backend.test:7000',
+  apiUrl: 'http://69.164.221.100:9001',
 };
